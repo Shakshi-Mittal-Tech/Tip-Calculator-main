@@ -13,16 +13,16 @@ let people = 0;
 // Handle tip button click
 tipButtons.forEach(btn => {
   btn.addEventListener('click', () => {
-    const isActive = btn.classList.contains('bg-[hsl(172,67%,45%)]');
+   const isActive = btn.classList.contains('active-tip');
 
     removeActiveStates();
 
     if (!isActive) {
       // Make this button active
-      btn.classList.add('bg-[hsl(172,67%,45%)]');
+       btn.classList.add('active-tip');
       tipPercent = parseInt(btn.textContent);
       customTipInput.value = '';
-      customTipInput.classList.remove('bg-[hsl(172,67%,45%)]', 'text-white');
+      customTipInput.classList.remove('active-tip');
     } else {
       // Deselect if already active
       tipPercent = 0;
@@ -40,10 +40,10 @@ customTipInput.addEventListener('input', () => {
   
   if (!isNaN(custom) && custom > 0) {
     tipPercent = custom;
-    customTipInput.classList.add('bg-[hsl(172,67%,45%)]', 'text-white');
+   customTipInput.classList.add('active-tip');
   } else {
     tipPercent = 0;
-    customTipInput.classList.remove('bg-[hsl(172,67%,45%)]', 'text-white');
+    customTipInput.classList.remove('active-tip');
   }
   
   calculate();
@@ -75,8 +75,8 @@ resetBtn.addEventListener('click', () => {
 
 // Helper functions
 function removeActiveStates() {
-  tipButtons.forEach(b => b.classList.remove('bg-[hsl(172,67%,45%)]'));
-  customTipInput.classList.remove('bg-[hsl(172,67%,45%)]');
+  tipButtons.forEach(b => b.classList.remove('active-tip'));
+  customTipInput.classList.remove('active-tip');
 }
 
 function validatePeople() {
