@@ -71,6 +71,8 @@ resetBtn.addEventListener('click', () => {
   bill = 0;
   tipPercent = 0;
   people = 0;
+    validatePeople();
+      toggleReset();
 });
 
 // Helper functions
