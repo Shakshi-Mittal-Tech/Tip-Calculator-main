@@ -99,7 +99,7 @@ function validateTip() {
 function calculate() {
   if (people >= 1 && bill > 0 && tipPercent > 0) {
     const tipAmount = (bill * (tipPercent / 100)) / people;
-    let total = (bill / people) + tipAmount;
+    const total = (bill / people) + tipAmount;
     tipAmountEl.textContent = `$${tipAmount.toFixed(2)}`;
     totalEl.textContent = `$${total.toFixed(2)}`;
   } else {
