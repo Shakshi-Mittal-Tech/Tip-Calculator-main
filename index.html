@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"> <!-- ensures compatibility with Internet Explorer -->
+  <meta name="description" content="Tip calculator">
+  <meta name="keywords" content="tip-calculation">
+  <meta name="author" content="Shakshi Mittal">
+  
+  <title>Frontend Mentor | Tip calculator app</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Extend Tailwind config to add custom font -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            mono: ['"Space Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+</head>
+<body class="bg-[hsl(185,41%,84%)] flex justify-center items-center min-h-screen font-mono">
+    <div class="flex flex-col items-center gap-8 w-full pt-10 md:mt-0">
+       <img src="./images/logo.svg" alt="Splitter Logo" class="w-20 h-auto" />
+       
+    <!-- <div class="bg-white flex flex-col md:flex-row p-4 md:p-8 rounded-xl shadow-xl max-w-2xl w-full gap-6"> -->
+ 
+      <div class="bg-white flex flex-col md:flex-row px-0 md:px-8 py-6 rounded-xl shadow-xl max-w-2xl w-full gap-6 md:mx-auto rounded-t-xl md:rounded-xl">
+
+
+    <div class="flex flex-col pl-4 pr-6 py-6 md:pl-4 md:pr-6 flex-1.2 gap-1">
+        <label class="text-[hsl(186,14%,43%)] text-xs">Bill</label>
+        <div class="relative">
+          <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-[hsl(184,14%,56%)]">
+          <img src="./images/icon-dollar.svg" alt="$" class="w-2 h-3">
+          </span>
+              <!-- validate in js--> 
+          <input 
+            type="text" 
+            placeholder="0"
+            class="w-full text-right pl-8 pr-2 py-1.5 rounded bg-[hsl(189,47%,97%)] text-[hsl(183,100%,15%)]  focus:outline-none placeholder:text-right placeholder:font-bold"
+          />
+        </div>
+
+
+      <label class="text-[hsl(186,14%,43%)] pt-8 pb-2 text-xs">Select Tip %</label>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 w-full">
+      <button class="bg-[hsl(183,100%,15%)] text-white py-2 rounded md:w-[80px] w-full "> 5%</button>
+      <button class="bg-[hsl(183,100%,15%)] text-white py-2 rounded md:w-[80px] w-full "> 10%</button>
+      <button class="bg-[hsl(183,100%,15%)] text-white py-2 rounded md:w-[80px] w-full "> 15%</button>
+      <button class="bg-[hsl(183,100%,15%)] text-white py-2 rounded md:w-[80px] w-full "> 25%</button>
+      <button class="bg-[hsl(183,100%,15%)] text-white py-2 rounded md:w-[80px] w-full "> 50%</button>
+      <input 
+  type="text" 
+  placeholder="Custom" 
+  class="bg-[hsl(189,47%,97%)] text-[hsl(183,100%,15%)] py-2 rounded md:w-[80px] w-full text-center custom-tip focus:outline-none" 
+/>
+</div>
+<label class="text-[hsl(186,14%,43%)] pt-6 pb-1 text-xs flex justify-between">
+  Number of People
+  <span id="peopleError" class="text-red-500 hidden">Can't be zero</span>
+</label>
+   <div class="relative">
+          <span class="absolute left-3 top-1/2 transform -translate-y-1/2">
+          <img src="./images/icon-person.svg" alt="$" class="w-2.5 h-3">
+          </span>
+              <!-- validate in js--> 
+          <input 
+            type="text" 
+            placeholder="0"
+            class="w-full text-right pl-8 pr-2 py-1.5 rounded bg-[hsl(189,47%,97%)] focus:outline-none placeholder:text-right placeholder:font-bold"
+          />
+    </div>
+    </div>
+    <div class="bg-[hsl(183,100%,15%)] rounded-lg flex flex-col justify-between px-6 pt-8 pb-6 min-w-[300px] flex-shrink-0 md:min-w-[300px]">
+      <div class="flex flex-col gap-6">
+        <div class="flex justify-between items-center">
+      <div class="flex flex-col">
+        <p class="text-[hsl(189,47%,97%)] text-xs font-bold">Tip Amount</p>
+        <p class="text-[hsl(184,14%,56%)] text-xs">/ person</p>
+      </div>
+      <p class="text-3xl text-[hsl(172,67%,45%)] font-bold">$0.00</p>
+    </div>
+
+    <div class="flex justify-between items-center">
+      <div class="flex flex-col pt-8">
+        <p class="text-[hsl(189,47%,97%)] text-xs font-bold">Total</p>
+        <p class="text-[hsl(184,14%,56%)] text-xs">/ person</p>
+      </div>
+      <p class="text-3xl text-[hsl(172,67%,45%)] font-bold pt-6">$0.00</p>
+    </div>
+  </div>
+
+  <button id="resetBtn" class="bg-[hsl(183,53%,27%)] text-[hsl(183,100%,15%)] w-full py-2 rounded mt-6 hover:bg-[hsl(172,67%,50%)] disabled:bg-[hsl(183,100%,25%)] disabled:text-[hsl(186,14%,43%)]">
+    RESET
+  </button>
+  </div>
+  </div>
+</div>
+  <script src="script.js"></script>
+</body>
+</html>
